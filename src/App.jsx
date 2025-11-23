@@ -26,8 +26,8 @@ export default function CaptchaEarningApp() {
   const [withdrawTimer, setWithdrawTimer] = useState(5);
   const [streak, setStreak] = useState(0);
 
-  const MINIMUM_WITHDRAW = 50;
-  const POINTS_PER_CAPTCHA = 5;
+  const MINIMUM_WITHDRAW = 500;
+  const POINTS_PER_CAPTCHA = 0.1;
 
   useEffect(() => {
     generateCaptcha();
@@ -51,7 +51,7 @@ export default function CaptchaEarningApp() {
       const earnedPoints = POINTS_PER_CAPTCHA + (streak > 0 ? streak : 0);
       setPoints(points + earnedPoints);
       setStreak(streak + 1);
-      setMessage(`🎉 Correct! +${earnedPoints} points! ${streak > 2 ? `🔥 ${streak} streak!` : ''}`);
+      setMessage(`🎉 Correct! +${earnedPoints} rupees! ${streak > 2 ? `🔥 ${streak} streak!` : ''}`);
       setMessageType('success');
       generateCaptcha();
       
@@ -248,7 +248,7 @@ export default function CaptchaEarningApp() {
                 onClick={handleSubmit}
                 className="w-full px-6 py-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 rounded-xl text-white font-bold text-lg shadow-lg"
               >
-                Submit & Earn {POINTS_PER_CAPTCHA} Points
+                Submit & Earn {POINTS_PER_CAPTCHA} Cash
               </motion.button>
             </div>
 
